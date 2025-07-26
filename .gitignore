@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+data/logs/
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Database
+*.sqlite3
+data/database/
+
+# Images/Videos
+*.jpg
+*.jpeg
+*.png
+*.webp
+data/videos/
+data/images/
+
+# Misc
+*.bak
+*.tmp
+*.swp 
