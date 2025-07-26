@@ -10,6 +10,9 @@ import sys
 import asyncio
 from pathlib import Path
 
+# Add parent directory to Python path so we can import app modules
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
 def test_imports():
     """Test if all required modules can be imported"""
     print("🔍 Testing imports...")
