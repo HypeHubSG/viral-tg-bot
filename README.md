@@ -143,9 +143,45 @@ This will verify all dependencies, configuration, and API keys.
 
 ### 7. Run the Bot
 
+#### Quick Start
 ```bash
 python main.py
 ```
+
+#### Using the Start Script (Recommended)
+The project includes a comprehensive start script that provides background execution and process management:
+
+```bash
+# Start the bot in background
+./scripts/start.sh
+
+# Check bot status
+./scripts/start.sh status
+
+# View real-time logs
+./scripts/start.sh logs
+
+# Stop the bot
+./scripts/start.sh stop
+
+# Restart the bot
+./scripts/start.sh restart
+```
+
+**Available Commands:**
+- `start` - Start the bot in background (default)
+- `stop` - Stop the running bot
+- `restart` - Stop and restart the bot
+- `status` - Check if the bot is running
+- `logs` - View bot logs in real-time
+
+**Features:**
+- ✅ Background execution with `nohup`
+- ✅ Process tracking with PID file
+- ✅ Automatic log file management
+- ✅ Warning if bot is already running
+- ✅ Safe stop/restart functionality
+- ✅ Real-time log monitoring
 
 ## Usage
 
