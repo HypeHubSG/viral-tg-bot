@@ -62,6 +62,7 @@ class ViralTelegramBot:
                 message_type = "video_note"
             
             logger.info(f"🔍 DEBUG: Received {message_type} message in chat: {chat_id}")
+            logger.info(f"🔍 DEBUG: Message: {message}")
             logger.info(f"🔍 DEBUG: Target group ID: {self.config.TELEGRAM_GROUP_ID}")
             
             if hasattr(message.chat, 'title'):
