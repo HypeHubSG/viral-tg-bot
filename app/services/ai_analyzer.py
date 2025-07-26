@@ -34,18 +34,36 @@ class AIAnalyzer:
             if not base64_image:
                 return None
             
-            # Prepare the analysis prompt
+            # Prepare the analysis prompt for 小红书 content generation
             analysis_prompt = """
-            Analyze this video cover image and provide a comprehensive analysis including:
+            你是 sgdaily (新加坡每日推荐) 博主助理，主要工作是写小红书文案。
             
-            1. **Content Description**: What is shown in the image?
-            2. **Visual Elements**: Colors, composition, style, quality
-            3. **Potential Context**: What type of video this might be (tutorial, entertainment, news, etc.)
-            4. **Target Audience**: Who might be interested in this content?
-            5. **Viral Potential**: What makes this content potentially engaging or shareable?
-            6. **Keywords/Tags**: Suggest relevant tags for categorization
+            请分析这个视频封面图片，并生成3-4个不同风格的小红书文案版本。要求：
             
-            Provide your analysis in a clear, structured format that would be useful for content creators and marketers.
+            📝 **文案要求**：
+            1. 把英文内容翻译成小红书风格的中文
+            2. 要有爆点和话题度，吸引眼球
+            3. 每个版本都要有不同的角度和风格
+            4. 文案要简洁有力，适合小红书平台
+            
+            🎯 **互动话题**：
+            每个文案后面都要加一个带选项的互动话题，提高互动率
+            例如："你们觉得呢？A. 太棒了 B. 一般般 C. 想试试"
+            
+            🏷️ **话题标签**：
+            每个文案后面都要加话题标签，必须包含：
+            - #新加坡
+            - #新加坡生活  
+            - #sgdaily
+            - 另外再加5-6个相关话题标签
+            
+            📱 **格式要求**：
+            - 使用多emoji表情
+            - 话题标签用井号#开头
+            - 分点用emoji区分
+            - 文案要分段清晰
+            
+            请生成3-4个不同版本的文案，每个都要有标题、正文、互动话题和话题标签。
             """
             
             # Make API call
@@ -81,28 +99,29 @@ class AIAnalyzer:
             return None
     
     async def generate_response_message(self, analysis: str, video_info: dict = None) -> str:
-        """Generate a formatted response message for Telegram"""
+        """Generate a formatted response message for Telegram with 小红书 content"""
         try:
             if not analysis:
-                return "❌ Unable to analyze the video cover image."
+                return "❌ 无法分析视频封面图片。"
             
             # Create a formatted message
-            message = "🎬 **Video Analysis Report**\n\n"
+            message = "📱 **小红书文案生成**\n\n"
+            message += "🎬 基于视频封面分析，为您生成多个小红书文案版本：\n\n"
             
             # Add video info if available
             if video_info:
                 if video_info.get('duration'):
-                    message += f"⏱️ **Duration**: {video_info['duration']} seconds\n"
+                    message += f"⏱️ 视频时长: {video_info['duration']} 秒\n"
                 if video_info.get('file_size'):
                     size_mb = video_info['file_size'] / (1024 * 1024)
-                    message += f"📁 **Size**: {size_mb:.2f} MB\n"
+                    message += f"📁 文件大小: {size_mb:.2f} MB\n"
                 message += "\n"
             
-            # Add analysis
+            # Add analysis (小红书文案)
             message += analysis
             
             # Add footer
-            message += "\n\n🤖 *Analysis powered by GPT-4 Vision*"
+            message += "\n\n🤖 *由 sgdaily 博主助理生成*"
             
             return message
             
