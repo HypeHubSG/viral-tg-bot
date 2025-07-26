@@ -24,14 +24,14 @@ fi
 echo "✅ Python $python_version detected"
 
 # Create virtual environment if it doesn't exist
-if [ ! -d "venv" ]; then
+if [ ! -d ".venv" ]; then
     echo "📦 Creating virtual environment..."
-    python3 -m venv venv
+    python3 -m venv .venv
 fi
 
 # Activate virtual environment
 echo "🔧 Activating virtual environment..."
-source venv/bin/activate
+source .venv/bin/activate
 
 # Install dependencies
 echo "📦 Installing dependencies..."
@@ -64,7 +64,7 @@ if [ $? -eq 0 ]; then
     echo "🎉 Deployment completed successfully!"
     echo ""
     echo "To start the bot, run:"
-    echo "  source venv/bin/activate"
+    echo "  source .venv/bin/activate"
     echo "  python main.py"
     echo ""
     echo "Or use the start script:"
